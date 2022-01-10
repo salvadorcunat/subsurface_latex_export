@@ -15,7 +15,6 @@
 \def\ssrfunitcuft{cuft}
 \def\ssrfunitmeterpermin{m/min}
 \def\ssrfunitftpermin{ft/min}
-%\def\myplot{\includegraphics[width=12.7cm,height=7.3cm]{\ssrfprofilename}}
 \documentclass[spanish]{article}
 \usepackage{textcomp}
 \usepackage[LGR,T1]{fontenc}
@@ -30,6 +29,8 @@
 \usepackage{calc}
 \usepackage{graphicx}
 \usepackage{xcolor}
+\usepackage{pgffor}
+\usepackage{etoolbox}
 \DeclareUnicodeCharacter{00B0}{\degree}
 
 \newcommand\ssrfpage{
@@ -164,23 +165,18 @@
 					\fbox{\begin{minipage}[t]{0.47\columnwidth}%
 						\underline{Botellas}
 
-						\begin{minipage}[t][1\totalheight][c]{0.45\columnwidth}%
-							\ssrfcyladescription%
-						\end{minipage}%
-						\fbox{\begin{minipage}[t][1\totalheight][c]{0.5\columnwidth}%
-							\begin{center}
-								\ssrfcylastartpress
-							\end{center}%
-						\end{minipage}}
-
-						%\begin{minipage}[t]{0.45\columnwidth}%
-						%\ssrfcylbdescription%
-						%\end{minipage}%
-						%\fbox{\begin{minipage}[t]{0.5\columnwidth}%
-						%\begin{center}
-						%\ssrfcylbstartpress
-						%\end{center}%
-						%\end{minipage}}%
+						\foreach \x in {a,b,...,e}{
+							\ifcsdef{ssrfcyl\x description}{
+								\begin{minipage}[t][1\totalheight][c]{0.45\columnwidth}%
+									\csuse{ssrfcyl\x description}%
+								\end{minipage}%
+								\fbox{\begin{minipage}[t][1\totalheight][c]{0.5\columnwidth}%
+									\begin{center}
+										\csuse{ssrfcyl\x startpress}
+									\end{center}%
+								\end{minipage}}
+							}{}
+						}
 					\end{minipage}}
 
 					\smallskip{}
