@@ -155,30 +155,52 @@
 							\end{center}%
 						\end{minipage}}
 
-							\underline{Lastre} \hspace{0.07\columnwidth}%
-						\fbox{\begin{minipage}[c]{0.6\columnwidth}%
+						\underline{Lastre}\\ %\hspace{0.07\columnwidth}%
+						%\vspace{0.005\textwidth}
+						\foreach \x in {a,b,...,f}{
+							\ifcsdef{ssrfweight\x type}{
+								\begin{minipage}[c]{0.3\columnwidth}%
+									\footnotesize\csuse{ssrfweight\x type}%
+								\end{minipage}\hspace{0.07\columnwidth}%
+								\fbox{\begin{minipage}[c]{0.5\columnwidth}%
+									\begin{center}
+										\footnotesize\csuse{ssrfweight\x amt}%
+									\end{center}%
+								\end{minipage}}%
+								\csgundef{ssrfweight\x type}
+							}
+						}
+						\begin{minipage}[c]{0.3\columnwidth}%
+							\footnotesize{Total}%
+						\end{minipage}\hspace{0.07\columnwidth}%
+						\fbox{\begin{minipage}[c]{0.5\columnwidth}%
 							\begin{center}
-								\ssrftotalweight
+								\footnotesize{\ssrftotalweight}
 							\end{center}%
 						\end{minipage}}%
 					\end{minipage}\hspace{0.05\columnwidth}%
 					\fbox{\begin{minipage}[t]{0.47\columnwidth}%
-						\underline{Botellas}
+						\footnotesize\underline{Botellas}
 
 						\foreach \x in {a,b,...,e}{
 							\ifcsdef{ssrfcyl\x description}{
-								\begin{minipage}[t][1\totalheight][c]{0.45\columnwidth}%
-									\csuse{ssrfcyl\x description}%
-								\end{minipage}%
-								\fbox{\begin{minipage}[t][1\totalheight][c]{0.5\columnwidth}%
+								\begin{minipage}[t][1\totalheight][c]{0.3\columnwidth}%
+									\scriptsize\csuse{ssrfcyl\x description}%
+								\end{minipage}\hspace{2pt}%
+								\fbox{\begin{minipage}[t][1\totalheight][c]{0.2\columnwidth}%
 									\begin{center}
-										\csuse{ssrfcyl\x startpress}
+										\scriptsize\csuse{ssrfcyl\x gasname}%
 									\end{center}%
-								\end{minipage}}
+								\end{minipage}}\hspace{2pt}%
+								\fbox{\begin{minipage}[t][1\totalheight][c]{0.25\columnwidth}%
+									\begin{center}
+										\scriptsize\csuse{ssrfcyl\x startpress}%
+									\end{center}%
+								\end{minipage}}%
 								\csgundef{ssrfcyl\x description}
-							}{}
+							}
 						}
-					\end{minipage}}
+					\end{minipage}}%
 
 					\smallskip{}
 
