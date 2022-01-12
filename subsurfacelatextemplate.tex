@@ -226,24 +226,41 @@
 
 			\end{minipage}%
 			\begin{minipage}[t][1\totalheight][c]{0.53\textwidth}%
-				\includegraphics[width=1\columnwidth]{\ssrfprofilename}%
+
+				\fbox{\begin{minipage}[c]{\columnwidth}%
+					\begin{center}
+						\small\textbf{Perfil de la inmersión}%
+					\end{center}	
+					\includegraphics[width=1\columnwidth]{\ssrfprofilename}%
+				\end{minipage}}%
+
+			\smallskip{}
+
+				\fbox{\begin{minipage}[c]{.45\columnwidth}
+					\begin{center}
+						\small{\textbf{Valoración:}\hspace{20pt}\ssrfrating}%
+					\end{center}
+				\end{minipage}}\hspace{24pt}%
+				\fbox{\begin{minipage}[c]{.45\columnwidth}
+					\begin{center}
+						\small{\textbf{Visibilidad:}\hspace{20pt}\ssrfviz}%
+					\end{center}
+				\end{minipage}}%
 			\end{minipage}%
 		\end{minipage}
 
 		\smallskip{}
 
 		\noindent\begin{minipage}[t]{1\columnwidth}%
-			\fbox{\begin{minipage}[t][\totalheight]{0.7\columnwidth}%
+			\fbox{\begin{minipage}[t][\totalheight]{0.72\columnwidth}%
 				\noindent\begin{minipage}[t]{1\columnwidth}%
 					\small\textbf{Notas:}%
 				\end{minipage}
 
 				\noindent\begin{minipage}[t]{1\columnwidth}%
-					\begin{center}
 						\small\ssrfcomment
-					\end{center}%
 				\end{minipage}%
-			\end{minipage}}\hspace{0.02\columnwidth}%
+			\end{minipage}}\hspace{5pt}%
 			\fbox{\begin{minipage}[t][\totalheight]{0.24\columnwidth}%
 				\small{\textbf{Sellos/firmas}}%
 			\end{minipage}}%
