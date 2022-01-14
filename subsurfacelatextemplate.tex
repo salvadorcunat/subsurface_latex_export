@@ -24,7 +24,7 @@
 \usepackage{babel}
 \addto\shorthandsspanish{\spanishdeactivate{~<>}}
 \usepackage[landscape,a5paper]{geometry}
-\geometry{verbose,tmargin=0cm,bmargin=0cm,lmargin=0cm,rmargin=0cm,headheight=0cm,headsep=0cm,footskip=0cm}
+\geometry{verbose,tmargin=0cm,bmargin=0cm,lmargin=5pt,rmargin=0cm,headheight=0cm,headsep=0cm,footskip=0cm}
 \pagestyle{empty}
 \usepackage{calc}
 \usepackage{graphicx}
@@ -32,93 +32,90 @@
 \usepackage{pgffor}
 \usepackage{etoolbox}
 \DeclareUnicodeCharacter{00B0}{\degree}
-
+\def\ssrf@boxwidth{\columnwidth - 2\fboxsep - 2\fboxrule}
 \newcommand\ssrfpage{
 	\begin{document}
 	\noindent %
 	\fbox{\begin{minipage}[t][0.97\paperheight]{0.97\paperwidth}%
 		\noindent %
-		\fbox{\begin{minipage}[t][.5cm][c]{0.1\textwidth}%
+		\fbox{\begin{minipage}[t][.5cm][c]{.1\ssrf@boxwidth}%
 			\begin{minipage}[c][.5cm][c]{.5cm}%
 				\includegraphics[width=1\columnwidth]{subsurface-icon.png}%
 			\end{minipage}%
 			\hspace{5pt} \textbf{\ssrfnumber}%
 		\end{minipage}}%
-		\fbox{\begin{minipage}[t][.5cm][c]{0.6\textwidth}%
+		\fbox{\begin{minipage}[t][.5cm][c]{0.6\ssrf@boxwidth}%
 			\textbf{Lugar:}\hspace{20pt}\ssrfplace%
 		\end{minipage}}%
-		\fbox{\begin{minipage}[t][.5cm][c]{0.26\textwidth}%
+		\fbox{\begin{minipage}[t][.5cm][c]{0.3\ssrf@boxwidth}%
 			\textbf{Fecha:}\hspace{20pt}\ssrfdate%
 		\end{minipage}}
 
 		\vspace{0.005\textwidth}
 
-		\fbox{\begin{minipage}[t][.5cm][c]{0.35\textwidth}%
+		\fbox{\begin{minipage}[t][.5cm][c]{0.35\ssrf@boxwidth}%
 			\textbf{Compañeros:} \ssrfbuddy%
 		\end{minipage}}%
-		\fbox{\begin{minipage}[t][.5cm][c]{0.35\textwidth}%
+		\fbox{\begin{minipage}[t][.5cm][c]{0.35\ssrf@boxwidth}%
 			\textbf{Centro:} \ssrfdivemaster%
 		\end{minipage}}%
-		\fbox{\begin{minipage}[t][.5cm][c]{0.26\textwidth}%
+		\fbox{\begin{minipage}[t][.5cm][c]{0.3\ssrf@boxwidth}%
 			\textbf{Hora:}\hspace{20pt}\ssrfhour:\ssrfminute%
 		\end{minipage}}
 
 		\vspace{0.01\textwidth}
 
 		\noindent\begin{minipage}[t]{1\textwidth}%
-			\begin{minipage}[t][1\totalheight][c]{0.45\textwidth}%
-				\fbox{\begin{minipage}[t]{0.95\columnwidth}%
-					\noindent\begin{minipage}[t]{1\columnwidth}%
-						\small{\textbf{Parámetros de la inmersión:}
+			\begin{minipage}[t][1\totalheight][c]{0.46\textwidth}%
+				\noindent\begin{minipage}[t]{\ssrf@boxwidth}%
+					\small\textbf{Parámetros de la inmersión}
 
-						\begin{minipage}[t][1\totalheight][c]{0.25\columnwidth}%
+					\fbox{\begin{minipage}[t]{\ssrf@boxwidth}%
+						\begin{minipage}[t][1\totalheight][c]{0.25\ssrf@boxwidth}%
 							\underline{Prof.Máxima}%
 						\end{minipage}%
-						\fbox{\begin{minipage}[t][1\totalheight][c]{0.2\columnwidth}%
+						\fbox{\begin{minipage}[t][1\totalheight][c]{0.25\ssrf@boxwidth}%
 							\begin{center}
-								\ssrfdepth
+								\ssrfdepth%
 							\end{center}%
-						\end{minipage}}\hspace{0.02\columnwidth}%
-						\begin{minipage}[t][1\totalheight][c]{0.25\columnwidth}%
+						\end{minipage}}\hspace{0.05\columnwidth}%
+						\begin{minipage}[t][1\totalheight][c]{0.25\ssrf@boxwidth}%
 							\underline{Duración}%
 						\end{minipage}%
-						\fbox{\begin{minipage}[t][1\totalheight][c]{0.2\columnwidth}%
+						\fbox{\begin{minipage}[t][1\totalheight][c]{0.25\ssrf@boxwidth}%
 							\begin{center}
-								\ssrftime
+								\ssrftime%
 							\end{center}%
 						\end{minipage}}%
-					}
-					\end{minipage}
 
-				\vspace{0.005\textwidth}
+					\smallskip{}
 
-				\noindent\begin{minipage}[t]{1\columnwidth}%
-					\begin{minipage}[t][1\totalheight][c]{0.25\columnwidth}%
+					\begin{minipage}[t][1\totalheight][c]{0.25\ssrf@boxwidth}%
 						\small\underline{Prof.Media}%
 					\end{minipage}%
-					\fbox{\begin{minipage}[t][1\totalheight][c]{0.2\columnwidth}%
+					\fbox{\begin{minipage}[t][1\totalheight][c]{0.25\ssrf@boxwidth}%
 						\begin{center}
 							\small\ssrfmeandepth
 						\end{center}%
-					\end{minipage}}\hspace{0.02\columnwidth}%
-					\begin{minipage}[t][1\totalheight][c]{0.25\columnwidth}%
+					\end{minipage}}\hspace{0.05\columnwidth}%
+					\begin{minipage}[t][1\totalheight][c]{0.25\ssrf@boxwidth}%
 						\small\underline{C.A.S.}%
 					\end{minipage}%
-					\fbox{\begin{minipage}[t][1\totalheight][c]{0.2\columnwidth}%
+					\fbox{\begin{minipage}[t][1\totalheight][c]{0.25\ssrf@boxwidth}%
 						\begin{center}
 							\small\ssrfsac
 						\end{center}%
 					\end{minipage}}%
-				\end{minipage}%
-			\end{minipage}}
+				\end{minipage}}%
+			\end{minipage}
 
 			\smallskip{}
 
-			\begin{minipage}[t]{0.95\columnwidth}%
-				\begin{minipage}[t]{0.45\columnwidth}%
+			\begin{minipage}[t]{\ssrf@boxwidth}%
+				\begin{minipage}[t]{0.5\ssrf@boxwidth}%
 					 \small{\textbf{Condiciones:}
 
-					\noindent\fbox{\begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}%
+					\noindent\fbox{\begin{minipage}[t]{\ssrf@boxwidth}%
 						\underline{Temperatura}
 
 						Aire: \ssrfairtemp
@@ -127,14 +124,14 @@
 					\end{minipage}}%
 					}
 				\end{minipage}\hspace{0.05\columnwidth}%
-				\begin{minipage}[t]{0.5\columnwidth}%
-					\small{\textbf{\underline{Gases}}
+				\begin{minipage}[t]{0.5\ssrf@boxwidth}%
+					\small{\textbf{Gas consumido:}
 
-					\noindent\fbox{\begin{minipage}[t]{1\columnwidth - 2\fboxsep - 2\fboxrule}%
-						\begin{minipage}[t][1\totalheight][c]{0.45\columnwidth}%
+					\noindent\fbox{\begin{minipage}[t]{\ssrf@boxwidth}%
+						\begin{minipage}[t][1\totalheight][c]{.5\ssrf@boxwidth}%
 							\ssrfcylagasname%
 						\end{minipage}%
-						\fbox{\begin{minipage}[t][1\totalheight][c]{0.5\columnwidth}%
+						\fbox{\begin{minipage}[t][1\totalheight][c]{.5\ssrf@boxwidth}%
 							\begin{center}
 								\ssrfgasuse
 							\end{center}%
@@ -149,29 +146,29 @@
 				\fbox{\begin{minipage}[t]{0.95\columnwidth}%
 					\small{\textbf{Equipo}}
 
-					\begin{minipage}[t]{0.55\columnwidth}%
+					\begin{minipage}[t]{0.5\ssrf@boxwidth}%
 						\small{\underline{Traje}}
 
-						\noindent\fbox{\begin{minipage}[t][1\totalheight][c]{1\columnwidth - 2\fboxsep - 2\fboxrule}%
+						\noindent\fbox{\begin{minipage}[t][1\totalheight][c]{\ssrf@boxwidth}%
 							\begin{center}
 								\scriptsize\ssrfsuit
 							\end{center}%
 						\end{minipage}}
 
-						\fbox{\begin{minipage}[t]{0.95\columnwidth}%
+						\fbox{\begin{minipage}[t][1\totalheight][c]{\ssrf@boxwidth}%
 							\scriptsize\underline{Botellas}
 
 							\foreach \x in {a,b,...,e}{
 								\ifcsdef{ssrfcyl\x description}{
-									\begin{minipage}[t][1\totalheight][c]{0.3\columnwidth}%
+									\fbox{\begin{minipage}[t][1\totalheight][c]{0.35\ssrf@boxwidth}%
 										\scriptsize\csuse{ssrfcyl\x description}%
-									\end{minipage}\hspace{2pt}%
-									\fbox{\begin{minipage}[t][1\totalheight][c]{0.2\columnwidth}%
+									\end{minipage}}\hspace{2pt}%
+									\fbox{\begin{minipage}[t][1\totalheight][c]{0.2\ssrf@boxwidth}%
 										\begin{center}
 											\scriptsize\csuse{ssrfcyl\x gasname}%
 										\end{center}%
 									\end{minipage}}\hspace{2pt}%
-									\fbox{\begin{minipage}[t][1\totalheight][c]{0.25\columnwidth}%
+									\fbox{\begin{minipage}[t][1\totalheight][c]{0.35\ssrf@boxwidth}%
 										\begin{center}
 											\scriptsize\csuse{ssrfcyl\x startpress}%
 										\end{center}%
@@ -180,16 +177,16 @@
 								}
 							}
 						\end{minipage}}%
-					\end{minipage}\hspace{0.05\columnwidth}%
-					\begin{minipage}[t]{0.40\columnwidth}%
+					\end{minipage}\hspace{0.07\columnwidth}%
+					\begin{minipage}[t]{0.5\ssrf@boxwidth}%
 						\small{\underline{Lastre}}\\ %\hspace{0.07\columnwidth}%
 						%\vspace{0.005\textwidth}
 						\foreach \x in {a,b,...,f}{
 							\ifcsdef{ssrfweight\x type}{
-								\begin{minipage}[c]{0.3\columnwidth}%
+								\begin{minipage}[c]{0.4\ssrf@boxwidth}%
 									\footnotesize\csuse{ssrfweight\x type}%
 								\end{minipage}\hspace{0.07\columnwidth}%
-								\fbox{\begin{minipage}[c]{0.5\columnwidth}%
+								\fbox{\begin{minipage}[c]{0.5\ssrf@boxwidth}%
 									\begin{center}
 										\footnotesize\csuse{ssrfweight\x amt}%
 									\end{center}%
@@ -197,10 +194,10 @@
 								\csgundef{ssrfweight\x type}
 							}
 						}
-						\begin{minipage}[c]{0.3\columnwidth}%
+						\begin{minipage}[c]{0.4\ssrf@boxwidth}%
 							\footnotesize{Total}%
 						\end{minipage}\hspace{0.07\columnwidth}%
-						\fbox{\begin{minipage}[c]{0.5\columnwidth}%
+						\fbox{\begin{minipage}[c]{0.5\ssrf@boxwidth}%
 							\begin{center}
 								\footnotesize{\ssrftotalweight}
 							\end{center}%
@@ -212,7 +209,7 @@
 					\noindent\begin{minipage}[t]{1\columnwidth}%
 						\textbf{Ordenador:}
 
-						\fbox{\begin{minipage}[t]{0.97\columnwidth}%
+						\fbox{\begin{minipage}[t]{\ssrf@boxwidth}%
 							\begin{center}
 								\small\ssrfcomputer
 							\end{center}%
@@ -224,24 +221,23 @@
 					\small{\textbf{Tipo:} \ssrftype}%
 				\end{minipage}}
 
-			\end{minipage}%
+			\end{minipage}\hspace{5pt}%
 			\begin{minipage}[t][1\totalheight][c]{0.53\textwidth}%
+				\small\textbf{Perfil de la inmersión}
 
-				\fbox{\begin{minipage}[c]{\columnwidth}%
-					\begin{center}
-						\small\textbf{Perfil de la inmersión}%
-					\end{center}	
+				\vspace{0.01\textwidth}
+				\fbox{\begin{minipage}[c]{\ssrf@boxwidth}%
 					\includegraphics[width=1\columnwidth]{\ssrfprofilename}%
 				\end{minipage}}%
 
-			\smallskip{}
+				\smallskip{}
 
-				\fbox{\begin{minipage}[c]{.45\columnwidth}
+				\fbox{\begin{minipage}[c]{.5\ssrf@boxwidth}
 					\begin{center}
 						\small{\textbf{Valoración:}\hspace{20pt}\ssrfrating}%
 					\end{center}
-				\end{minipage}}\hspace{24pt}%
-				\fbox{\begin{minipage}[c]{.45\columnwidth}
+				\end{minipage}}%\hspace{1pt}%
+				\fbox{\begin{minipage}[c]{.5\ssrf@boxwidth}
 					\begin{center}
 						\small{\textbf{Visibilidad:}\hspace{20pt}\ssrfviz}%
 					\end{center}
@@ -252,7 +248,7 @@
 		\smallskip{}
 
 		\noindent\begin{minipage}[t]{1\columnwidth}%
-			\fbox{\begin{minipage}[t][\totalheight]{0.72\columnwidth}%
+			\fbox{\begin{minipage}[t][\totalheight][c]{0.75\ssrf@boxwidth}%
 				\noindent\begin{minipage}[t]{1\columnwidth}%
 					\small\textbf{Notas:}%
 				\end{minipage}
@@ -260,8 +256,8 @@
 				\noindent\begin{minipage}[t]{1\columnwidth}%
 						\small\ssrfcomment
 				\end{minipage}%
-			\end{minipage}}\hspace{5pt}%
-			\fbox{\begin{minipage}[t][\totalheight]{0.24\columnwidth}%
+			\end{minipage}}%\hspace{5pt}%
+			\fbox{\begin{minipage}[t][\totalheight][c]{0.25\ssrf@boxwidth}%
 				\small{\textbf{Sellos/firmas}}%
 			\end{minipage}}%
 		\end{minipage}%
