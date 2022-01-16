@@ -160,7 +160,7 @@
 							\scriptsize\underline{Botellas}
 
 							\foreach \x in {a,b,...,e}{
-								\ifboolexpr{test{\ifcsdef{ssrfcyl\x description}} and not test{\ifcsvoid{ssrfcyl\x description}}}{%\ifcsvoid
+								\ifboolexpr{test{\ifcsdef{ssrfcyl\x startpress}} and not test{\ifcsvoid{ssrfcyl\x startpress}}}{%
 									\fbox{\begin{minipage}[t][2ex][c]{0.38\ssrf@boxwidth}%
 										\scriptsize\csuse{ssrfcyl\x description}%
 									\end{minipage}}\hspace{2pt}%
@@ -174,7 +174,7 @@
 											\scriptsize\csuse{ssrfcyl\x startpress}%
 										\end{center}%
 									\end{minipage}}%
-									\csgundef{ssrfcyl\x description}
+									\csgundef{ssrfcyl\x startpress}
 								}
 							}
 						\end{minipage}}%
