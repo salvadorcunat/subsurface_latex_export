@@ -44,6 +44,7 @@ while [ "$#" -gt 0 ]; do
 			_APPEND=1
 			;;
 		-n|--noappend)	_APPEND=0
+			shift 1
 			;;
 		*)	echo "$_usage"
 			exit 0
