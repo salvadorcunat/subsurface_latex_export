@@ -1,0 +1,369 @@
+%/* vim: cindent tabstop=2 shiftwidth=2
+%% LyX 2.3.6 created this file.  For more info, see http://www.lyx.org/.
+%% Heavily edited by boret to fit subsurface's exported latex file
+%
+\def\ssrfunitmeter{m}
+\def\ssrfunitft{ft}
+\def\ssrfunitkg{kg}
+\def\ssrfunitlb{lb}
+\def\ssrfunitbar{bar}
+\def\ssrfunitpsi{psi}
+\def\ssrfunitcelsius{}
+\def\ssrfunitcentigrade{${}^\circ$C}
+\def\ssrfunitfahrenheit{${}^\circ$F}
+\def\ssrfunitliter{$\ell$}
+\def\ssrfunitcuft{cuft}
+\def\ssrfunitmeterpermin{m/min}
+\def\ssrfunitftpermin{ft/min}
+\documentclass[spanish]{article}
+\usepackage{textcomp}
+\usepackage[LGR,T1]{fontenc}
+\usepackage[sfdefault]{FiraSans}
+\usepackage[nomap]{FiraMono}
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\addto\shorthandsspanish{\spanishdeactivate{~<>}}
+\usepackage[portrait,a4paper]{geometry}
+\geometry{verbose,tmargin=0cm,bmargin=0cm,lmargin=5pt,rmargin=0cm,headheight=0cm,headsep=0cm,footskip=0cm}
+\pagestyle{empty}
+\usepackage{calc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{pgffor}
+\usepackage{etoolbox}
+\DeclareUnicodeCharacter{00B0}{\degree}
+\DeclareUnicodeCharacter{2113}{\ssrfunitliter}
+\def\ssrf@boxwidth{\columnwidth - 2\fboxsep - 2\fboxrule}
+\newcommand\ssrfpage{
+	\begin{document}
+	\noindent %
+	\fbox{\begin{minipage}[t][0.97\paperheight]{0.97\paperwidth}%
+		\noindent %
+		\fbox{\begin{minipage}[t][1cm][c]{.15\ssrf@boxwidth}%
+			\begin{minipage}[t][1cm][c]{1cm}%
+				\includegraphics[width=\columnwidth]{subsurface-icon.png}%
+			\end{minipage}%
+			\hspace{5pt} 
+			\begin{minipage}[t][1cm][c]{\ssrf@boxwidth-1cm-5pt}%
+				\begin{center}
+					\large{\textbf{\ssrfnumber}}%
+				\end{center}
+			\end{minipage}%
+		\end{minipage}}%
+		\fbox{\begin{minipage}[t][1cm][c]{0.65\ssrf@boxwidth}%
+			\begin{minipage}[t][1cm][c]{.74\columnwidth}%
+				\large{\textbf{Lugar:}}
+				\hspace{5pt}\ssrfplace%
+			\end{minipage}
+			\ifboolexpr{test{\ifcsdef{ssrfgpslat}} and not test{\ifdimcomp{\ssrfgpslat}{=}{0}}}{
+				\begin{minipage}[t]{0.25\columnwidth}
+					\fbox{\begin{minipage}[t][\totalheight][c]{\ssrf@boxwidth}%
+						\begin{center}
+							\textbf{Lat:}\hspace{5pt}\ssrfgpslat%
+						\end{center}
+					\end{minipage}}%
+					\vspace{0.005\textwidth}
+					\fbox{\begin{minipage}[t][\totalheight][c]{\ssrf@boxwidth}%
+						\begin{center}
+							\textbf{Lon:}\hspace{5pt}\ssrfgpslon%
+						\end{center}
+					\end{minipage}}%
+				\end{minipage}%
+			}{}%
+		\end{minipage}}%
+		\fbox{\begin{minipage}[t][1cm][c]{0.2\ssrf@boxwidth}%
+			\begin{center}
+				\large\textbf{Fecha:}
+				\hspace{5pt}
+				\ssrfdate%
+			\end{center}
+		\end{minipage}}
+
+		\vspace{0.005\textwidth}
+
+		\fbox{\begin{minipage}[t][1cm][c]{0.35\ssrf@boxwidth}%
+			\large\textbf{Compañeros:} \ssrfbuddy%
+		\end{minipage}}%
+		\fbox{\begin{minipage}[t][1cm][c]{0.45\ssrf@boxwidth}%
+			\large\textbf{Centro:} \ssrfdivemaster%
+		\end{minipage}}%
+		\fbox{\begin{minipage}[t][1cm][c]{0.2\ssrf@boxwidth}%
+			\begin{center}
+				\large\textbf{Hora:}\hspace{20pt}\ssrfhour:\ssrfminute%
+			\end{center}
+		\end{minipage}}
+
+		\vspace{0.01\textwidth}
+
+		\noindent\begin{minipage}[t]{1\textwidth}%
+			\begin{minipage}[t][1\totalheight][c]{0.46\textwidth}%
+				\fbox{\begin{minipage}[t][.5cm][c]{0.95\columnwidth}%
+					\small{\textbf{Etiquetas:} \ssrftype}%
+				\end{minipage}}%
+				\smallskip{}
+				\noindent\begin{minipage}[t]{\ssrf@boxwidth}%
+					\small\textbf{Parámetros de la inmersión}
+
+					\fbox{\begin{minipage}[t]{\ssrf@boxwidth}%
+						\begin{minipage}[t][1\totalheight][c]{0.25\ssrf@boxwidth}%
+							\underline{Prof.Máxima}%
+						\end{minipage}%
+						\fbox{\begin{minipage}[t][1\totalheight][c]{0.25\ssrf@boxwidth}%
+							\begin{center}
+								\ssrfdepth%
+							\end{center}%
+						\end{minipage}}\hspace{0.05\columnwidth}%
+						\begin{minipage}[t][1\totalheight][c]{0.25\ssrf@boxwidth}%
+							\underline{Duración}%
+						\end{minipage}%
+						\fbox{\begin{minipage}[t][1\totalheight][c]{0.25\ssrf@boxwidth}%
+							\begin{center}
+								\ssrftime%
+							\end{center}%
+						\end{minipage}}%
+
+						\smallskip{}
+
+						\begin{minipage}[t][1\totalheight][c]{0.25\ssrf@boxwidth}%
+							\small\underline{Prof.Media}%
+						\end{minipage}%
+						\fbox{\begin{minipage}[t][1\totalheight][c]{0.25\ssrf@boxwidth}%
+							\begin{center}
+								\small\ssrfmeandepth
+							\end{center}%
+						\end{minipage}}\hspace{0.05\columnwidth}%
+						\begin{minipage}[t][1\totalheight][c]{0.25\ssrf@boxwidth}%
+							\small\underline{C.A.S.}%
+						\end{minipage}%
+						\fbox{\begin{minipage}[t][1\totalheight][c]{0.25\ssrf@boxwidth}%
+							\begin{center}
+								\small\ssrfsac
+							\end{center}%
+						\end{minipage}}%
+					\end{minipage}}%
+				\end{minipage}%
+
+				\smallskip{}
+
+				\begin{minipage}[t]{\ssrf@boxwidth}%
+					\small{\textbf{Condiciones:}
+
+					\noindent\fbox{\begin{minipage}[t]{\ssrf@boxwidth}%
+						\underline{Temperatura}
+
+						\begin{minipage}[t][\totalheight][c]{.20\ssrf@boxwidth}
+							Aire:
+						\end{minipage}
+						\fbox{\begin{minipage}[t][\totalheight][c]{.25\ssrf@boxwidth}
+							\begin{center}
+								\ssrfairtemp
+							\end{center}
+						\end{minipage}}%
+						\hspace{.1\ssrf@boxwidth}
+						\begin{minipage}[t][\totalheight][c]{.20\ssrf@boxwidth}
+							Agua:
+						\end{minipage}%
+						\fbox{\begin{minipage}[t][\totalheight][c]{.25\ssrf@boxwidth}
+							\begin{center}
+								\ssrfwatertemp%
+							\end{center}
+						\end{minipage}}%
+
+						\smallskip{}
+
+						\begin{minipage}[t][\totalheight][c]{.20\ssrf@boxwidth}
+							T.Máxima:
+						\end{minipage}
+						\fbox{\begin{minipage}[t][\totalheight][c]{.25\ssrf@boxwidth}
+							\begin{center}
+								\ssrfmaxtemp%
+							\end{center}
+						\end{minipage}}%
+						\hspace{.1\ssrf@boxwidth}
+						\begin{minipage}[t][\totalheight][c]{.20\ssrf@boxwidth}
+							T.Mínima:
+						\end{minipage}%
+						\fbox{\begin{minipage}[t][\totalheight][c]{.25\ssrf@boxwidth}
+							\begin{center}
+								\ssrfmintemp%
+							\end{center}
+						\end{minipage}}%
+					\end{minipage}}%
+					}
+				\end{minipage}\hspace{0.05\columnwidth}%
+
+				\smallskip{}
+
+				\fbox{\begin{minipage}[t]{0.95\columnwidth}%
+					\small{\textbf{Equipo}}
+
+					\smallskip{}
+
+					\noindent\begin{minipage}[t]{1\columnwidth}%
+						\underline{Ordenador:}
+						\smallskip{}
+
+						\fbox{\begin{minipage}[t]{\ssrf@boxwidth}%
+							\begin{center}
+								\small\ssrfcomputer
+							\end{center}%
+						\end{minipage}}%
+					\end{minipage}%
+					\smallskip{}
+					\small{\underline{Traje}}
+
+					\noindent\fbox{\begin{minipage}[t][1\totalheight][c]{\ssrf@boxwidth}%
+						\begin{center}
+							\small\ssrfsuit
+						\end{center}%
+					\end{minipage}}%
+					\smallskip{}
+					\begin{minipage}[t]{0.5\ssrf@boxwidth}%
+						\small{\underline{Lastre}}%
+
+						\fbox{\begin{minipage}[t]{\ssrf@boxwidth}
+							\foreach \x in {a,b,...,f}{
+								\ifcsdef{ssrfweight\x type}{
+									\begin{minipage}[c]{0.4\ssrf@boxwidth}%
+										\small\csuse{ssrfweight\x type}%
+									\end{minipage}\hspace{0.07\columnwidth}%
+									\fbox{\begin{minipage}[c]{0.5\ssrf@boxwidth}%
+										\begin{center}
+											\small\csuse{ssrfweight\x amt}%
+										\end{center}%
+									\end{minipage}}%
+									\csgundef{ssrfweight\x type}
+								}
+							}
+							\begin{minipage}[c]{0.4\ssrf@boxwidth}%
+								\small{Total}%
+							\end{minipage}\hspace{0.07\columnwidth}%
+							\fbox{\begin{minipage}[c]{0.5\ssrf@boxwidth}%
+								\begin{center}
+									\small{\ssrftotalweight}
+								\end{center}%
+							\end{minipage}}%
+						\end{minipage}}%
+					\end{minipage}%
+				\end{minipage}}%
+			\end{minipage}\hspace{5pt}%
+			\begin{minipage}[t][1\totalheight][c]{0.53\textwidth}%
+				\small\textbf{Perfil de la inmersión}
+
+				\vspace{0.01\textwidth}
+				\fbox{\begin{minipage}[c]{\ssrf@boxwidth}%
+					\includegraphics[width=1\columnwidth]{\ssrfprofilename}%
+				\end{minipage}}%
+
+				\smallskip{}
+
+				\fbox{\begin{minipage}[c]{.5\ssrf@boxwidth}
+					\begin{center}
+						\small{\textbf{Valoración:}\hspace{20pt}\ssrfrating}%
+					\end{center}
+				\end{minipage}}%\hspace{1pt}%
+				\fbox{\begin{minipage}[c]{.5\ssrf@boxwidth}
+					\begin{center}
+						\small{\textbf{Visibilidad:}\hspace{20pt}\ssrfviz}%
+					\end{center}
+				\end{minipage}}%
+			\end{minipage}%
+		\end{minipage}
+
+		\smallskip{}
+
+		\fbox{\begin{minipage}[t][1\totalheight][c]{\ssrf@boxwidth}%
+			\begin{minipage}[t][2ex][c]{0.142\columnwidth}%
+				\small\underline{Botellas}%
+			\end{minipage}%
+			\begin{minipage}[t][2ex][c]{0.142\columnwidth}%
+				\begin{center}
+					\small\underline{Gas}%
+				\end{center}
+			\end{minipage}%
+			\begin{minipage}[t][2ex][c]{0.142\columnwidth}%
+				\begin{center}
+					\small\underline{O2}%
+				\end{center}
+			\end{minipage}%
+			\begin{minipage}[t][2ex][c]{0.142\columnwidth}%
+				\begin{center}
+					\small\underline{N2}%
+				\end{center}
+			\end{minipage}%
+			\begin{minipage}[t][2ex][c]{0.142\columnwidth}%
+				\begin{center}
+					\small\underline{He}%
+				\end{center}
+			\end{minipage}%
+			\begin{minipage}[t][2ex][c]{0.142\columnwidth}%
+				\begin{center}
+					\small\underline{P.Inicio}%
+				\end{center}
+			\end{minipage}%
+			\begin{minipage}[t][2ex][c]{0.142\columnwidth}%
+				\begin{center}
+					\small\underline{P.Final}%
+				\end{center}
+			\end{minipage}%
+
+			\smallskip{}
+
+			\foreach \x in {a,b,...,e}{
+				\ifboolexpr{test{\ifcsdef{ssrfcyl\x startpress}} and not test{\ifcsvoid{ssrfcyl\x startpress}}}{%
+					\fbox{\begin{minipage}[t][2ex][c]{0.142\ssrf@boxwidth}%
+						\small\csuse{ssrfcyl\x description}%
+					\end{minipage}}\hspace{2pt}%
+					\fbox{\begin{minipage}[t][2ex][c]{0.142\ssrf@boxwidth}%
+						\begin{center}
+							\small\csuse{ssrfcyl\x gasname}%
+						\end{center}%
+					\end{minipage}}\hspace{2pt}%
+					\fbox{\begin{minipage}[t][2ex][c]{0.142\ssrf@boxwidth}%
+						\begin{center}
+							\small\csuse{ssrfcyl\x mixOx}%
+						\end{center}%
+					\end{minipage}}%
+					\fbox{\begin{minipage}[t][2ex][c]{0.142\ssrf@boxwidth}%
+						\begin{center}
+							\small\csuse{ssrfcyl\x mixNi}%
+						\end{center}%
+					\end{minipage}}%
+					\fbox{\begin{minipage}[t][2ex][c]{0.142\ssrf@boxwidth}%
+						\begin{center}
+							\small\csuse{ssrfcyl\x mixHe}%
+						\end{center}%
+					\end{minipage}}%
+					\fbox{\begin{minipage}[t][2ex][c]{0.142\ssrf@boxwidth}%
+						\begin{center}
+							\small\csuse{ssrfcyl\x startpress}%
+						\end{center}%
+					\end{minipage}}%
+					\fbox{\begin{minipage}[t][2ex][c]{0.142\ssrf@boxwidth}%
+						\begin{center}
+							\small\csuse{ssrfcyl\x endpress}%
+						\end{center}%
+					\end{minipage}}%
+					\csgundef{ssrfcyl\x startpress}
+				}
+			}
+		\end{minipage}}%
+
+		\smallskip{}
+
+		\noindent\begin{minipage}[t]{1\columnwidth}%
+			\fbox{\begin{minipage}[t][\totalheight][c]{0.75\ssrf@boxwidth}%
+				\noindent\begin{minipage}[t]{1\columnwidth}%
+					\small\textbf{Notas:}%
+				\end{minipage}
+
+				\noindent\begin{minipage}[t]{1\columnwidth}%
+						\small\ssrfcomment
+				\end{minipage}%
+			\end{minipage}}%\hspace{5pt}%
+			\fbox{\begin{minipage}[t][\totalheight][c]{0.25\ssrf@boxwidth}%
+				\small{\textbf{Sellos/firmas}}%
+			\end{minipage}}%
+		\end{minipage}%
+	\end{minipage}}
+}
