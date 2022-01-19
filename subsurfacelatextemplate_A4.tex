@@ -218,15 +218,17 @@
 						\end{center}%
 					\end{minipage}}%
 					\smallskip{}
-					\begin{minipage}[t]{0.5\ssrf@boxwidth}%
+					\begin{minipage}[c]{\columnwidth}%
 						\small{\underline{Lastre}}%
 
 						\fbox{\begin{minipage}[t]{\ssrf@boxwidth}
 							\foreach \x in {a,b,...,f}{
 								\ifcsdef{ssrfweight\x type}{
-									\begin{minipage}[c]{0.4\ssrf@boxwidth}%
-										\small\csuse{ssrfweight\x type}%
-									\end{minipage}\hspace{0.07\columnwidth}%
+									\begin{minipage}[c]{0.5\columnwidth}%
+										\begin{center}
+											\small\csuse{ssrfweight\x type}%
+										\end{center}
+									\end{minipage}%\hspace{0.07\columnwidth}%
 									\fbox{\begin{minipage}[c]{0.5\ssrf@boxwidth}%
 										\begin{center}
 											\small\csuse{ssrfweight\x amt}%
@@ -235,9 +237,11 @@
 									\csgundef{ssrfweight\x type}
 								}
 							}
-							\begin{minipage}[c]{0.4\ssrf@boxwidth}%
-								\small{Total}%
-							\end{minipage}\hspace{0.07\columnwidth}%
+							\begin{minipage}[c]{0.5\columnwidth}%
+								\begin{center}
+									\small\textbf{Total}%
+								\end{center}
+							\end{minipage}%\hspace{0.07\columnwidth}%
 							\fbox{\begin{minipage}[c]{0.5\ssrf@boxwidth}%
 								\begin{center}
 									\small{\ssrftotalweight}
@@ -252,7 +256,7 @@
 
 				\vspace{0.01\textwidth}
 				\fbox{\begin{minipage}[c]{\ssrf@boxwidth}%
-					\includegraphics[width=1\columnwidth]{\ssrfprofilename}%
+					\includegraphics[width=1\columnwidth, height=.3\textheight]{\ssrfprofilename}%
 				\end{minipage}}%
 
 				\smallskip{}
