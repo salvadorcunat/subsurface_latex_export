@@ -88,6 +88,9 @@ cp "$_SRC_DIR/$_INF" "$_TMP_DIR/$_INF"
 cd "$_TMP_DIR" || \
 	{ error_msg "${0##*/}" "Unable to enter $_TMP_DIR"; exit 1; }
 
+# beging building
+#
+report_msg "${0##*/}" "Building in $_TMP_DIR"
 echo "
 %/* vim: cindent tabstop=2 shiftwidth=2
 \documentclass[spanish]{article}
@@ -105,6 +108,8 @@ echo "
 [[ -f "${_FBASEN}_processed.pdf" ]] || \
 	{ error_msg "${0##*/}" "pdflatex have failed, look for $_FBASEN.log in $_TMP_DIR"; exit 1; }
 cp -b -u -v "${_FBASEN}_processed.pdf" "$_SRC_DIR/${_FBASEN}_processed.pdf"
+report_msg "${0##*/}" "Building done. Check  $_SRC_DIR/${_FBASEN}_processed.pdf"
+
 # At this point everything has gone smoothly, remove the tmp dir and quit
 #
 rm -rf "$_TMP_DIR"
