@@ -66,6 +66,7 @@ _FBASEN="${_INF%%\.*}"
 mkdir -p "/tmp/ssrf_tmp_$$" || \
 	{ error_msg "${0##*/}" "Unable to create $_TMP_DIR"; exit 1; }
 cp "$_SRC_DIR/subsurfacelatextemplate.tex" "$_TMP_DIR/subsurfacelatextemplate.tex"
+cp "$_SRC_DIR/subsurfacelatextemplate_A4.tex" "$_TMP_DIR/subsurfacelatextemplate_A4.tex"
 cp "$_SRC_DIR/$_INF" "$_TMP_DIR/$_INF"
 cp ./*.png "$_TMP_DIR"
 cd "$_TMP_DIR" || \
